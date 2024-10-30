@@ -1,5 +1,7 @@
 @extends('layout.auth-layout')
 
+@section('title', 'Register | Galery App')
+
 @section('auth-content')
     <div class="p-4 md:p-16 h-full w-full flex flex-col items-center justify-center">
         <div class="flex flex-col gap-2 text-center mb-12">
