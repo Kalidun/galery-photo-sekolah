@@ -1,9 +1,7 @@
-@extends('layout.app')
+@extends('layout.app-layout')
 
-@section('navbar')
-  @include('components.navbar')
-@endsection
+@section('title', 'Dashboard | Galery App')
 
-@section('content')
+@section('main-content')
 
 @endsection

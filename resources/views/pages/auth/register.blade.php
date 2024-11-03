@@ -12,11 +12,23 @@
                 Silahkan daftar terlebih dahulu
             </div>
         </div>
-        <form action="#" class="w-full flex flex-col gap-2 px-2 md:px-4">
-            <input type="text" name="name" placeholder="Name" class="p-2 border border-gray-300 rounded-md w-full bg-white focus:outline-none" autofocus>
-            <input type="text" name="email" placeholder="Email" class="p-2 border border-gray-300 rounded-md w-full bg-white focus:outline-none" autofocus>
-            <input type="password" name="password" placeholder="Password" class="p-2 border border-gray-300 rounded-md w-full bg-white focus:outline-none">
-            <button class="w-full bg-yellow-400 text-white p-2 rounded-md mt-4 hover:bg-yellow-500 transition duration-100" type="submit">Register</button>
+        @if (session()->has('error'))
+            <div class="w-full flex flex-col gap-2 px-2 md:px-4"></div>
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span class="block sm:inline">{{ session('error') }}</span>
+            </div>
+        @endif
+        <form action="{{ route('register') }}" method="POST" class="w-full flex flex-col gap-2 px-2 md:px-4">
+            @csrf
+            <input type="text" name="name" placeholder="Name"
+                class="p-2 border border-gray-300 rounded-md w-full bg-white focus:outline-none" autofocus>
+            <input type="text" name="email" placeholder="Email"
+                class="p-2 border border-gray-300 rounded-md w-full bg-white focus:outline-none" autofocus>
+            <input type="password" name="password" placeholder="Password"
+                class="p-2 border border-gray-300 rounded-md w-full bg-white focus:outline-none">
+            <button class="w-full bg-yellow-400 text-white p-2 rounded-md mt-4 hover:bg-yellow-500 transition duration-100"
+                type="submit">Register</button>
         </form>
         <div class="text-sm mt-4">
             Sudah punya akun?
