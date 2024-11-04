@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Create\CreatePhotoController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::controller(LoginController::class)->group(function () {
-        Route::post('/logout', 'destroy')->name('logout');
+        Route::get('/logout', 'destroy')->name('logout');
     });
     Route::controller(HomeController::class)->group(function () {
         Route::get('/', 'index')->name('home');
+    });
+    Route::prefix('create')->group(function () {
+        Route::controller(CreatePhotoController::class)->group(function () {
+            Route::get('/', 'index')->name('create.index');
+            Route::post('/', 'store')->name('create.store');
+        });
     });
 });
 

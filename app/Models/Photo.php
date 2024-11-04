@@ -10,9 +10,15 @@ class Photo extends Model
     use HasFactory;
 
     protected $fillable = [
-        'path',
+        'image',
+        'is_public',
         'description',
         'user_id',
+        'categories',
+    ];
+
+    protected $casts = [
+        'categories' => 'array',
     ];
 
     public function user()

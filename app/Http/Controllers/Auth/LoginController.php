@@ -23,7 +23,7 @@ class LoginController extends Controller
 
         if (auth()->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/')->with('success', 'Selamat Datang di Galery App');
         }
 
         return back()->with('error', 'Login Failed! Email or Password is wrong.');
@@ -33,6 +33,6 @@ class LoginController extends Controller
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Logout Success');
     }
 }

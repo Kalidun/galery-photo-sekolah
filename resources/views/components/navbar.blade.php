@@ -1,5 +1,20 @@
-<nav class="bg-yellow-300 flex justify-center shadow select-none">
-  <a href="{{ route('home') }}" class="p-3 text-xl">
-    Galery App
-  </a>
+<nav class="bg-yellow-300 flex justify-between px-4 shadow select-none">
+    <div class="px-3 py-1 flex flex-col justify-center items-start">
+        @hasSection('page-title')
+            <div class="text-base font-bold">Gallery App</div>
+            <div class="flex gap-1 py-[0.1rem]">
+                <div class="text-xs font-medium">
+                    Gallery App - 
+                    @yield('page-title')
+                </div>
+            </div>
+        @else
+            <a href="{{ route('home') }}" class="text-xl font-bold py-2">
+                Gallery App
+            </a>
+        @endif
+    </div>
+    <a href="{{ route('logout') }}" class="p-3 hover:bg-red-400 rounded hover:text-white">
+        Logout
+    </a>
 </nav>
