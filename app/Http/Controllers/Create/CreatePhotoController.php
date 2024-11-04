@@ -7,6 +7,7 @@ use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CreatePhotoController extends Controller
 {
@@ -27,7 +28,7 @@ class CreatePhotoController extends Controller
             ]);
             
             $imageName = Auth::user()->name . '-' . time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
+            $request->image->storeAs('images', $imageName, 'public');
 
             DB::beginTransaction();
 
