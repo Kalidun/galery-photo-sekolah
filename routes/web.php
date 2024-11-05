@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Create\CreatePhotoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Profile\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,11 @@ Route::middleware('auth')->group(function () {
             Route::get('/', 'index')->name('create.index');
             Route::post('/', 'store')->name('create.store');
         });
+    });
+    Route::prefix('profile')->group(function () {
+       Route::controller(ProfileController::class)->group(function () {
+           Route::get('/', 'index')->name('profile.index');
+       });
     });
 });
 

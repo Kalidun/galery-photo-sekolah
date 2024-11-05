@@ -15,7 +15,7 @@
             </svg>
 
         </a>
-        <a href="#" class="sidebar-item p-2 flex items-center hover:bg-yellow-300 rounded">
+        <a href="{{ route('profile.index')}}" class="sidebar-item p-2 flex items-center hover:bg-yellow-300 rounded">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"

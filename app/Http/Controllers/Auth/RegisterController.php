@@ -27,7 +27,7 @@ class RegisterController extends Controller
                 'password' => Hash::make($request->password),
             ]);
             
-            return redirect()->route('login');
+            return redirect()->route('login')->with('success', 'Register Success');
         } catch (\Throwable $th) {
             return redirect()->route('register')->with('error', $th->getMessage());
         }
