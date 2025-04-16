@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
 </head>
 
 <body class="p-0 m-0 box-border bg-yellow-50 min-h-screen" style="max-height: 100vh !important">
@@ -21,5 +23,7 @@
         </div>
     </div>
 </body>
-    @include('components.toast')
+<script src="https://kit.fontawesome.com/f9dc9fae33.js" crossorigin="anonymous"></script>
+@include('components.toast')
+
 </html>

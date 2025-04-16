@@ -1,38 +1,22 @@
 @extends('layout.app-layout')
 
-@section('title', 'Profile | Galery App')
+@section('title', 'Album Detail | Galery App')
 
-@section('page-title', 'Profile')
+@section('page-title', 'Album Detail')
 
 @section('main-content')
-    <div class="px-4 flex flex-col gap-2 items-center h-full max-h-[90vh] overflow-y-auto">
-        <div class="flex flex-col gap-2 items-center mb-6 pb-2 w-full">
-            @if ($profile_image != null)
-                <img src="{{ asset('storage/profile/' . $profile_image) }}" class="w-1/6 rounded-full">
-            @else
-                <img src="{{ asset('assets/images/profile-image.jpg') }}" class="w-1/6 rounded-full border border-black">
-            @endif
-            <div class="text-xl font-bold">
-                {{ $name }}
-            </div>
-            <div class="flex gap-4">
-                <a href="{{ route('profile.edit') }}"
-                    class="px-4 py-2 bg-yellow-300 hover:bg-yellow-400 transition-colors duration-100 rounded-xl">Edit
-                    Profile</a>
-                <a href="{{ route('photos.index') }}"
-                    class="px-4 py-2 bg-yellow-300 hover:bg-yellow-400 transition-colors duration-100 rounded-xl">Add
-                    Photo</a>
-            </div>
+    <div class="flex flex-col gap-2 max-h-[90vh] overflow-y-auto">
+        <div class="w-full text-center text-2xl">
+            Album {{ $album_name }}
         </div>
-        <div class="w-full flex flex-col gap-2 p-4 h-full border-t-2 border-yellow-300">
-            <div class="w-full text-center font-bold text-xl">Galeri Kamu</div>
-            <div class="columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-2 px-2 py-6 space-y-2">
-                @foreach ($photoData as $photo)
-                    <div onclick="setImage('{{ asset('storage/images/' . $photo->image) }}', {{ $photo->id }})" data-modal-target="image-modal" data-modal-toggle="image-modal" class="p-2 border border-gray-300 rounded-md bg-white hover:scale-105 transition duration-100">
-                        <img src="{{ asset('storage/images/' . $photo->image) }}" class="w-ful">
-                    </div>
-                @endforeach
-            </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 max-h-[92vh] gap-2 p-4 h-full">
+            @foreach ($photos as $photo)
+                <div data-modal-target="image-modal" data-modal-toggle="image-modal"
+                    class="p-2 border border-gray-300 rounded-md bg-white hover:scale-105 transition duration-100"
+                    onclick="setImage('{{ asset('storage/images/' . $photo->image) }}', {{ $photo->id }})">
+                    <img src="{{ asset('storage/images/' . $photo->image) }}" class="w-full">
+                </div>
+            @endforeach
         </div>
     </div>
     <div id="image-modal" tabindex="-1" aria-hidden="true"
@@ -69,6 +53,8 @@
     </div>
     <script>
         const imageContainer = document.getElementById('image-container');
+        const usernameContainer = document.getElementById('username-container');
+        const likeIcon = document.getElementById('like-icon')
 
         const setImage = (image, id) => {
             imageContainer.innerHTML = `

@@ -21,6 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_image',
+        'bio',
+        'birthday',
+        'gender',
+        'phone',
     ];
 
     /**
@@ -44,5 +49,17 @@ class User extends Authenticatable
     public function photos()
     {
         return $this->hasMany(Photo::class, 'user_id', 'id');
+    }
+    public function albums()
+    {
+        return $this->hasMany(Album::class, 'user_id', 'id');
+    }
+    public function comments()
+    {
+        return $this->hasMany(PhotoComment::class, 'user_id', 'id');
+    }
+    public function likes()
+    {
+        return $this->hasMany(PhotoLike::class, 'user_id', 'id');
     }
 }

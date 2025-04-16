@@ -4,8 +4,12 @@
             <div class="text-base font-bold">Gallery App</div>
             <div class="flex gap-1 py-[0.1rem]">
                 <div class="text-xs font-medium">
-                    Gallery App - 
+                    Gallery App -
                     @yield('page-title')
+                    @hasSection('page-subtitle')
+                        -
+                        @yield('page-subtitle')
+                    @endif
                 </div>
             </div>
         @else
@@ -14,7 +18,7 @@
             </a>
         @endif
     </div>
-    <a href="{{ route('logout') }}" class="p-3 hover:bg-red-400 rounded hover:text-white">
+    <a href="{{ route('logout') }}" class="p-3 hover:bg-yellow-200 rounded transition-all duration-100">
         Logout
     </a>
 </nav>
